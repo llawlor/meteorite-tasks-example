@@ -36,6 +36,8 @@ class TasksController < ApplicationController
     task = Task.find(params[:id])
     # destroy the task
     task.destroy
+    # push to redis
+    $redis.publish(Meteorite.bind_key(task), 'delete')
     # blank response
     head :ok
   end
