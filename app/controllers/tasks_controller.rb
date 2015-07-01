@@ -6,6 +6,8 @@ class TasksController < ApplicationController
     task = Task.find(params[:id])
     # update the task
     task.update_attributes(task_params)
+    # push to redis
+    $redis.publish(Meteorite.bind_key(task), task.to_json)
     # blank response
     head :ok
   end
