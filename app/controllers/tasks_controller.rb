@@ -20,6 +20,10 @@ class TasksController < ApplicationController
   def create
     # create the task
     task = Task.create(task_params)
+    # render the partial to a string
+    task_string = render_to_string(partial: 'task', locals: { task: task })
+    # push to redis
+    $redis.publish(Meteorite.bind_key(Task.all), task_string)
     # blank response
     head :ok
   end

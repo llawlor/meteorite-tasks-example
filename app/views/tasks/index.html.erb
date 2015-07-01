@@ -11,7 +11,7 @@
 
   <br><br>
 
-  <table class="table table-striped table-bordered">
+  <table class="table table-striped table-bordered meteorite" data-bind-key="<%= Meteorite.bind_key(@tasks) %>">
     <% @tasks.each do |task| %>
       <%= render partial: 'task', locals: { task: task } %>
     <% end %>

@@ -1,8 +1,8 @@
-<tr>
+<tr id="<%= Meteorite.bind_key(task) %>">
   <td>
     <%= form_for task, remote: true, html: { style: 'float: left; margin-right: 5px;' } do |f| %>
       <label>
-        <%= f.check_box :checked, class: 'task_check' %>
+        <%= f.check_box :checked, class: 'task_check meteorite', data: { bind_key: Meteorite.bind_key(task), bind_attr: 'checked' } %>
         <span class="checkbox_text <%= 'checked' if task.checked?%>"><%= task.text %></span>
       </label>
     <% end %>
