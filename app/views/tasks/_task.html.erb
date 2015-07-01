@@ -1,0 +1,12 @@
+<tr>
+  <td>
+    <%= form_for task, remote: true, html: { style: 'float: left; margin-right: 5px;' } do |f| %>
+      <label>
+        <%= f.check_box :checked, class: 'task_check' %>
+        <span class="checkbox_text <%= 'checked' if task.checked?%>"><%= task.text %></span>
+      </label>
+    <% end %>
+    
+    <%= link_to raw("&times;"), task, method: 'delete', data: { remote: true }, class: 'pull-right' %>
+  </td>
+</tr>

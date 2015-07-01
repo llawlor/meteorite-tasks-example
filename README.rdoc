@@ -1,0 +1,3 @@
+== README
+
+This is an example application that utilizes the Meteorite gem at https://github.com/llawlor/meteorite.

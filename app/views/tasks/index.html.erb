@@ -1,0 +1,47 @@
+<div class="col-sm-offset-3 col-sm-6">
+
+  <h1>Tasks</h1>
+
+  <br><br>
+
+  <%= form_for @task, remote: true do |f| %>
+    <%= f.text_field :text %>
+    <%= f.submit %>
+  <% end %>
+
+  <br><br>
+
+  <table class="table table-striped table-bordered">
+    <% @tasks.each do |task| %>
+      <%= render partial: 'task', locals: { task: task } %>
+    <% end %>
+  </table>
+
+</div>
+
+<script>
+  // clear textbox on new task submit
+  $(document).on('submit', '#new_task', function() {
+    $('#task_text').val('');
+  });
+
+  // submit checkbox
+  $(document).on('click', '.task_check', function() {
+    $(this).closest('form').submit();
+  });
+
+  // when the task is changed (event is fired from websocket message)
+  $(document).on('change', '.task_check', function() {
+    // get the target
+    var $target_text = $(this).siblings('.checkbox_text');
+    // if checkbox is checked
+    if ($(this).prop('checked')) {
+      // add the strikethrough effect
+      $target_text.addClass('checked');
+    // else checkbox is unchecked
+    } else {
+      // remove the strikethrough effect
+      $target_text.removeClass('checked');
+    }
+  });
+</script>
