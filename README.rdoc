@@ -1,3 +1,5 @@
 == README
 
 This is an example application that utilizes the Meteorite gem at https://github.com/llawlor/meteorite.
+For a live demo, please see http://getmeteorite.com/ .  Open up the demo in two different browser windows, make changes in the first browser window and they will instantly appear in the second. 
+
