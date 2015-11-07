@@ -20,6 +20,8 @@ class TasksController < ApplicationController
 
   # add a new task
   def create
+    # exit if blank task
+    head :ok and return if params[:task].present? && params[:task][:text].blank?
     # create the task
     task = Task.create(task_params)
     # render the partial to a string
